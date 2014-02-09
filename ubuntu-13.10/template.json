@@ -2,8 +2,11 @@
   "variables": {
     "aws_access_key": "",
     "aws_secret_key": "",
-    "volume_size": 50
+    "volume_size": 50,
+    "ami":"ami-2afd0b5d", 
+    "region":"eu-west-1"
   },
+
   "provisioners": [
     {"type": "shell",
      "override": {
@@ -15,12 +18,13 @@
      }
     }
   ],
+
   "builders": [{
     "type": "amazon-ebs",
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
-    "region": "eu-west-1",
-    "source_ami": "ami-2afd0b5d",
+    "region": "{{user `region`}}",
+    "source_ami": "{{user `ami`}}",
     "instance_type": "t1.micro",
     "ssh_username": "ubuntu",
     "ami_name": "ubuntu-13.10_puppet-3.4.2_{{timestamp}}", 

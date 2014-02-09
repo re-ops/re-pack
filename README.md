@@ -1,7 +1,16 @@
 # Intro 
 
-A collection of packer templates for Celestial
+A collection of packer templates for Celestial.
 
+# Usage
+
+See each template indivdualy:
+
+```bash 
+$ cd ubuntu-13.10
+$ packer build  -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-key>' template.json
+```
+ 
 # Copyright and license
 
 Copyright [2014] [Ronen Narkis]
