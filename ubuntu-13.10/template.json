@@ -12,16 +12,10 @@
 
   "provisioners": [
     {"type": "shell",
-     "environment_vars": [
-       "ACCESS_KEY={{user `s3cmd_access_key`}}",
-       "SECRET_KEY={{user `s3cmd_secret_key`}}",
-       "GPG_PASSPHRASE={{user `s3cmd_gpg_key`}}"
-     ],
      "override": {
         "amazon-ebs": {
           "scripts" : [
-            "scripts/puppet.sh", 
-            "scripts/s3cmd.sh"
+            "scripts/puppet.sh"
           ]
         }
      }
