@@ -5,14 +5,23 @@
     "volume_size": 50,
     "ami":"ami-2afd0b5d", 
     "region":"eu-west-1",
+    "s3cmd_access_key":"",
+    "s3cmd_secret_key":"",
+    "s3cmd_gpg_key":""
   },
 
   "provisioners": [
     {"type": "shell",
+     "environment_vars": [
+       "ACCESS_KEY={{user `s3cmd_access_key`}}",
+       "SECRET_KEY={{user `s3cmd_secret_key`}}",
+       "GPG_PASSPHRASE={{user `s3cmd_gpg_key`}}"
+     ],
      "override": {
         "amazon-ebs": {
           "scripts" : [
-            "scripts/puppet.sh"
+            "scripts/puppet.sh", 
+            "scripts/s3cmd.sh"
           ]
         }
      }
