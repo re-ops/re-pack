@@ -5,9 +5,6 @@
     "volume_size": 50,
     "ami":"ami-2afd0b5d", 
     "region":"eu-west-1",
-    "s3cmd_access_key":"",
-    "s3cmd_secret_key":"",
-    "s3cmd_gpg_key":""
   },
 
   "provisioners": [
