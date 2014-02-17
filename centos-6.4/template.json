@@ -1,0 +1,52 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "volume_size": 50,
+    "ami":"ami-8aa3a8fe", 
+    "region":"eu-west-1",
+    "s3cmd_access_key":"",
+    "s3cmd_secret_key":"",
+    "s3cmd_gpg_key":""
+  },
+
+  "provisioners": [
+    {"type": "shell",
+     "environment_vars": [
+       "ACCESS_KEY={{user `s3cmd_access_key`}}",
+       "SECRET_KEY={{user `s3cmd_secret_key`}}",
+       "GPG_PASSPHRASE={{user `s3cmd_gpg_key`}}"
+     ],
+     "override": {
+        "amazon-ebs": {
+          "scripts" : [
+            "scripts/puppet.sh", 
+            "scripts/s3cmd.sh"
+          ]
+        }
+     }
+    }
+  ],
+
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "{{user `region`}}",
+    "source_ami": "{{user `ami`}}",
+    "instance_type": "t1.micro",
+    "ssh_username": "ec2-user",
+    "ssh_timeout":"3m",
+    "ami_name": "centos-6.4_puppet-3.4.2_{{timestamp}}", 
+    "ami_block_device_mappings": [ {
+            "device_name": "/dev/sda",
+            "volume_size": "{{user `volume_size`}}",
+            "delete_on_termination": true
+     }],
+    "launch_block_device_mappings": [ {
+            "device_name": "/dev/sda",
+            "volume_size": "{{user `volume_size`}}",
+            "delete_on_termination": true
+     }]
+  }]
+}
