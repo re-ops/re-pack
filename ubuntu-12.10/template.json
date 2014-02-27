@@ -3,7 +3,7 @@
     "aws_access_key": "",
     "aws_secret_key": "",
     "volume_size": 50,
-    "ami":"ami-0e0cf879", 
+    "ami":"ami-b98476ce", 
     "region":"eu-west-1",
     "s3cmd_access_key":"",
     "s3cmd_secret_key":"",
