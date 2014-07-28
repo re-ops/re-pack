@@ -7,7 +7,8 @@
     "region":"eu-west-1",
     "s3cmd_access_key":"",
     "s3cmd_secret_key":"",
-    "s3cmd_gpg_key":""
+    "s3cmd_gpg_key":"",
+    "instance_type":"t1.micro"
   },
 
   "provisioners": [
@@ -34,7 +35,7 @@
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "{{user `region`}}",
     "source_ami": "{{user `ami`}}",
-    "instance_type": "t1.micro",
+    "instance_type": "{{user `instance_type`}}",
     "ssh_username": "ubuntu",
     "ami_name": "ubuntu-13.10_puppet-3.4.2_{{timestamp}}", 
     "ami_block_device_mappings": [ {
