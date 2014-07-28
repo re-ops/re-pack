@@ -1,7 +1,9 @@
+sudo apt-get update
+
 if cat /proc/version | grep Ubuntu
 then
-  group add puppet
-  sudo apt-get install git ruby1.9.1 ruby1.9.1-dev rubygems -y
+  groupadd puppet
+  sudo apt-get install git ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 make -y
 fi
 
 if cat /proc/version | grep Red
