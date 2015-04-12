@@ -1,4 +1,4 @@
-sudo apt-get install s3cmd
+sudo apt-get install s3cmd -y
 
 echo "
 [default]
@@ -45,3 +45,5 @@ verbosity = WARNING
 website_endpoint = http://%(bucket)s.s3-website-%(location)s.amazonaws.com/
 website_error =
 website_index = index.html" > ~/.s3cfg
+
+sudo cp ~/.s3cfg /root

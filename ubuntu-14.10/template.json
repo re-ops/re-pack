@@ -3,11 +3,12 @@
     "aws_access_key": "",
     "aws_secret_key": "",
     "volume_size": 50,
-    "ami":"ami-b98476ce", 
+    "ami":"ami-799e100e", 
     "region":"eu-west-1",
     "s3cmd_access_key":"",
     "s3cmd_secret_key":"",
-    "s3cmd_gpg_key":""
+    "s3cmd_gpg_key":"",
+    "instance_type":"t1.micro"
   },
 
   "provisioners": [
@@ -20,7 +21,6 @@
      "override": {
         "amazon-ebs": {
           "scripts" : [
-            "scripts/update.sh", 
             "scripts/puppet.sh", 
             "scripts/s3cmd.sh"
           ]
@@ -35,9 +35,9 @@
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "{{user `region`}}",
     "source_ami": "{{user `ami`}}",
-    "instance_type": "t1.micro",
+    "instance_type": "{{user `instance_type`}}",
     "ssh_username": "ubuntu",
-    "ami_name": "ubuntu-12.10_puppet-3.4.2_{{timestamp}}", 
+    "ami_name": "ubuntu-14.10_puppet-3.7.4_{{timestamp}}", 
     "ami_block_device_mappings": [ {
             "device_name": "/dev/sda1",
             "volume_size": "{{user `volume_size`}}",
