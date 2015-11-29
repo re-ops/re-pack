@@ -2,13 +2,13 @@
   "variables": {
     "aws_access_key": "",
     "aws_secret_key": "",
-    "volume_size": 50,
-    "ami":"ami-799e100e", 
-    "region":"eu-west-1",
+    "volume_size": "50",
+    "ami":"ami-3aa5b45b", 
+    "region":"us-west-2",
     "s3cmd_access_key":"",
     "s3cmd_secret_key":"",
     "s3cmd_gpg_key":"",
-    "instance_type":"t1.micro"
+    "instance_type":"t2.micro"
   },
 
   "provisioners": [
@@ -37,7 +37,7 @@
     "source_ami": "{{user `ami`}}",
     "instance_type": "{{user `instance_type`}}",
     "ssh_username": "ubuntu",
-    "ami_name": "ubuntu-14.10_puppet-3.7.4_{{timestamp}}", 
+    "ami_name": "ubuntu-15.04_puppet-3.8.2_{{timestamp}}", 
     "ami_block_device_mappings": [ {
             "device_name": "/dev/sda1",
             "volume_size": "{{user `volume_size`}}",
