@@ -1,0 +1,30 @@
+{
+  "builders": [
+    {
+	"ssh_pty" : "true",
+	"type": "googlecompute",
+	"account_file": "{{user `service-file`}}",
+	"project_id": "{{user `project-id`}}",
+	"source_image": "centos-6-v20151104",
+	"disk_size": "100",
+	"image_description": "centos 6 with puppet 3.8.2 and 100GB ROOT",
+	"image_name": "centos-6-puppet-382-{{timestamp}}",
+	"tags":["ssh-enabled"],
+	"ssh_username": "ronen",
+	"zone": "europe-west1-d"
+   }
+ ],
+ "provisioners": [
+    {
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "script/puppet.sh",
+        "script/vagrant.sh",
+        "script/sshd.sh",
+	  "script/fdisk.sh"
+      ],
+      "type": "shell"
+    }
+  ]
+
+}
