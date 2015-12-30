@@ -1,14 +1,19 @@
 # Intro 
 
-A collection of packer templates for Celestial.
+A collection of packer templates for creating Celestial ready images/ami's under AWS, GCE etc..
 
 # Usage
 
-See each template indivdualy:
 
 ```bash 
-$ cd ubuntu-13.10
+# build Ubuntu 15.04 AMI 
+$ cd src/aws/ubuntu-15.04
 $ packer build  -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-key>' template.json
+
+# build ubuntu 15.10 GCE image
+$ cd src/gce/ubuntu-15.10
+$ packer build -only=googlecompute -var 'service_file=<somefile.json>' -var 'project_id=<id>' template.json
+
 ```
  
 # Copyright and license
