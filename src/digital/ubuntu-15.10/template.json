@@ -1,0 +1,22 @@
+{
+  "builders": [
+    {
+     "type": "digitalocean",
+     "api_token": "{{user `api_token`}}",
+     "image": "ubuntu-15-10-x64",
+     "region": "lon1",
+     "size": "512mb"
+    }
+   ],
+ "provisioners": [
+    {
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "script/puppet.sh",
+        "script/sshd.sh"
+      ],
+      "type": "shell"
+    }
+  ]
+
+}
