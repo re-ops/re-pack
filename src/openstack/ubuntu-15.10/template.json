@@ -1,0 +1,26 @@
+{
+  "builders": [
+    {
+     "type": "openstack",
+     "ssh_username": "ubuntu",
+     "image_name": "ubuntu-15.10_puppet-3.8.4",
+     "source_image": "{{ user `source_image` }}",
+     "flavor": "m1.small",
+     "use_floating_ip": "{{ user `use_floating_ip` }}",
+     "floating_ip_pool": "{{ user `floating_ip_pool` }}",
+     "networks": "{{ user `networks` }}"
+    }
+   ],
+ "provisioners": [
+    {
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "script/puppet.sh",
+        "script/sshd.sh"
+      ],
+      "type": "shell"
+
+    }
+  ]
+
+}
