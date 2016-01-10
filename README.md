@@ -14,11 +14,23 @@ $ packer build  -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-
 $ cd src/gce/ubuntu-15.10
 $ packer build -only=googlecompute -var 'service_file=<somefile.json>' -var 'project_id=<id>' template.json
 
+# build ubuntu 15.10 Digitalocean image
+$ cd src/digital/ubuntu-15.10
+$ packer build -only=digitalocean -var 'api_token=<your token>' template.json
+
+# build ubuntu 15.10 Openstack image
+$ source your-openrc.sh
+$ cd src/openstack/ubuntu-15.10
+# copy and edit your settings
+$ cp local_example.json local.json
+$ packer build -only=openstack -var-file=local.json template.json
+
+
 ```
  
 # Copyright and license
 
-Copyright [2014] [Ronen Narkis]
+Copyright [2015] [Ronen Narkis]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
