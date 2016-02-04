@@ -1,4 +1,9 @@
 {
+  "variables": {
+    "s3cmd_access_key":"",
+    "s3cmd_secret_key":"",
+    "s3cmd_gpg_key":""
+  },
   "builders": [
     {
      "type": "digitalocean",
@@ -12,10 +17,16 @@
     {
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
-        "script/puppet.sh",
-        "script/sshd.sh"
+        "scripts/puppet.sh",
+        "scripts/sshd.sh",
+	  "scripts/s3cmd.sh"
       ],
-      "type": "shell"
+     "environment_vars": [
+       "ACCESS_KEY={{user `s3cmd_access_key`}}",
+       "SECRET_KEY={{user `s3cmd_secret_key`}}",
+       "GPG_PASSPHRASE={{user `s3cmd_gpg_key`}}"
+     ],
+     "type": "shell"
     }
   ]
 
