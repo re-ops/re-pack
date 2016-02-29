@@ -1,1 +1,4 @@
 src/openstack/ubuntu-15.10/local.json
+src/kvm/packer_cache
+src/kvm/authorized_keys
+packer-ubuntu-1504-server

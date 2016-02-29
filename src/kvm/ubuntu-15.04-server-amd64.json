@@ -45,16 +45,19 @@
     ],
 
     "provisioners": [
-        {
+       {
             "type": "shell",
             "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
             "scripts": [
                 "scripts/update.sh"
             ]
-        }, {
+       }, {
+         "type": "shell",
+         "inline": ["mkdir /home/{{user `user`}}/.ssh -p"]
+       }, {
 	  "type": "file",
         "source": "authorized_keys",
-        "destination": "/home/{{user `password`}}/.ssh/authorized_keys"
-      }
+        "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
+       }
     ]
 }
