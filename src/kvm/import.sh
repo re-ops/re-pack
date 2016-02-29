@@ -1,0 +1,1 @@
+virt-install -n ubuntu-15.04 -r 2048 --os-type=linux --os-variant=ubuntuutopic --disk output-ubuntu-1504-server/packer-ubuntu-1504-server,device=disk,bus=virtio -w  bridge=virbr0,model=virtio --vnc --noautoconsole --import
