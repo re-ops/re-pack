@@ -3,12 +3,12 @@
     "aws_access_key": "",
     "aws_secret_key": "",
     "volume_size": "50",
-    "ami":"ami-3aa5b45b", 
-    "region":"us-west-2",
+    "ami":"ami-9f388eec", 
+    "region":"eu-west-1",
     "s3cmd_access_key":"",
     "s3cmd_secret_key":"",
     "s3cmd_gpg_key":"",
-    "instance_type":"t2.micro"
+    "instance_type":"m3.medium"
   },
 
   "provisioners": [
@@ -31,6 +31,7 @@
 
   "builders": [{
     "type": "amazon-ebs",
+    "associate_public_ip_address": true,
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "{{user `region`}}",
