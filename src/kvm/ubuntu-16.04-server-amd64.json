@@ -52,7 +52,12 @@
        {
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
-         "scripts": [ "scripts/update.sh", "scripts/network.sh"]
+         "scripts": [
+           "scripts/mirror.sh",
+	     "scripts/update.sh",
+	     "scripts/network.sh",
+	     "scripts/puppet.sh"
+	   ]
        }, {
          "type": "shell",
          "inline": ["mkdir /home/{{user `user`}}/.ssh -p"]
