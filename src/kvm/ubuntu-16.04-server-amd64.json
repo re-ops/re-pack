@@ -56,7 +56,8 @@
            "scripts/mirror.sh",
 	     "scripts/update.sh",
 	     "scripts/network.sh",
-	     "scripts/puppet.sh"
+	     "scripts/puppet.sh",
+	     "scripts/sudoers.sh"
 	   ]
        }, {
          "type": "shell",
