@@ -8,3 +8,8 @@ echo "auto eth0"  >> /etc/network/interfaces
 echo "iface eth0 inet dhcp" >> /etc/network/interfaces
 echo "auto eth1"  >> /etc/network/interfaces
 echo "iface eth1 inet dhcp" >> /etc/network/interfaces
+
+# making dhcp client react faster
+sed -i 's/#retry 60;/retry 10;/' /etc/dhcp/dhclient.conf
+sed -i 's/timeout 300;/timeout 5;/' /etc/dhcp/dhclient.conf
+
