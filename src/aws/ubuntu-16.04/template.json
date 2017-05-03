@@ -1,0 +1,44 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "volume_size": "50",
+    "ami":"ami-96666ff5",
+    "region":"ap-southeast-2",
+    "instance_type":"t2.medium"
+  },
+
+  "provisioners": [
+    {"type": "shell",
+       "override": {
+        "amazon-ebs": {
+          "scripts" : [
+            "scripts/puppet.sh"
+          ]
+        }
+     }
+    }
+  ],
+
+  "builders": [{
+    "type": "amazon-ebs",
+    "associate_public_ip_address": true,
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "{{user `region`}}",
+    "source_ami": "{{user `ami`}}",
+    "instance_type": "{{user `instance_type`}}",
+    "ssh_username": "ubuntu",
+    "ami_name": "ubuntu-16.04_puppet-3.8.7_{{timestamp}}",
+    "ami_block_device_mappings": [ {
+            "device_name": "/dev/sda1",
+            "volume_size": "{{user `volume_size`}}",
+            "delete_on_termination": true
+     }],
+    "launch_block_device_mappings": [ {
+            "device_name": "/dev/sda1",
+            "volume_size": "{{user `volume_size`}}",
+            "delete_on_termination": true
+     }]
+  }]
+}
