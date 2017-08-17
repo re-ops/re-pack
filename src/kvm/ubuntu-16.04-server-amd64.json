@@ -6,7 +6,7 @@
    "builders":
     [
         {
-            "name": "ubuntu-1604-server",
+            "name": "ubuntu-16.04.3-server",
             "type": "qemu",
             "format": "qcow2",
             "accelerator": "kvm",
@@ -14,9 +14,9 @@
 
             "iso_urls": [
 		  "{{ user `iso_url` }}",
-		  "http://releases.ubuntu.com/16.04/ubuntu-16.04.2-server-amd64.iso"
+		  "http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso"
 		],
-            "iso_checksum": "2bce60d18248df9980612619ff0b34e6",
+            "iso_checksum": "10fcd20619dce11fe094e960c85ba4a9",
             "iso_checksum_type": "md5",
 
             "http_directory": "http",
