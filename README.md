@@ -1,13 +1,13 @@
 # Intro
 
-A collection of packer templates for creating re-core ready images/ami's under AWS, Digitalocean, KVM etc..
+A collection of packer templates for creating re-core ready images under AWS, Digitalocean, KVM etc..
 
 # Usage
 
 
 ```bash
-# build Ubuntu 15.04 AMI
-$ cd src/aws/ubuntu-15.04
+# build Ubuntu 16.04 AMI
+$ cd src/aws/ubuntu-16.04
 $ packer build  -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-key>' template.json
 
 # build ubuntu 15.10 Digitalocean image

@@ -14,7 +14,7 @@
 
             "iso_urls": [
 		  "{{ user `iso_url` }}",
-		  "http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso"
+		  "/home/ronen/ISOs/ubuntu-16.04.3-server-amd64.iso"
 		],
             "iso_checksum": "10fcd20619dce11fe094e960c85ba4a9",
             "iso_checksum_type": "md5",
