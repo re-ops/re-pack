@@ -1,6 +1,6 @@
 # Intro
 
-A collection of packer templates for creating re-core ready images under AWS, Digitalocean, KVM etc..
+A collection of [packer](https://www.packer.io/) templates for creating re-core ready images under AWS, Digitalocean, KVM etc..
 
 # Usage
 
@@ -10,8 +10,8 @@ A collection of packer templates for creating re-core ready images under AWS, Di
 $ cd src/aws/ubuntu-16.04
 $ packer build  -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-key>' template.json
 
-# build ubuntu 15.10 Digitalocean image
-$ cd src/digital/ubuntu-15.10
+# build ubuntu 16.04 Digitalocean image
+$ cd src/digital/ubuntu-16.04
 $ packer build -only=digitalocean -var 'api_token=<your token>' template.json
 
 # build ubuntu 16.04 KVM image
@@ -22,7 +22,7 @@ $ packer build -var 'user=<your user>' -var 'password=<your pass>' ubuntu-16.04-
 
 # Copyright and license
 
-Copyright [2017] [Ronen Narkis]
+Copyright [2018] [Ronen Narkis]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
