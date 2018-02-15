@@ -1,9 +1,8 @@
 # Intro
 
-A collection of [packer](https://www.packer.io/) templates for creating re-core ready images under AWS, Digitalocean, KVM etc..
+A collection of [packer](https://www.packer.io/) templates for creating [re-core](https://github.com/re-ops/re-core) ready images for AWS, Digitalocean, KVM etc..
 
 # Usage
-
 
 ```bash
 # build Ubuntu 16.04 AMI
