@@ -1,0 +1,75 @@
+{
+   "variables": {
+    "password": "",
+    "hostname": "template"
+   },
+   "builders":
+    [
+        {
+            "name": "ubuntu-16.04.3-desktop",
+            "type": "qemu",
+            "format": "qcow2",
+            "accelerator": "kvm",
+            "disk_size": "20000",
+
+            "iso_urls": [
+		  "{{ user `iso_url` }}",
+		  "/home/ronen/ISOs/ubuntu-16.04.3-server-amd64.iso"
+		],
+            "iso_checksum": "10fcd20619dce11fe094e960c85ba4a9",
+            "iso_checksum_type": "md5",
+
+            "http_directory": "http",
+
+            "ssh_username": "{{user `user`}}",
+            "ssh_password": "{{user `password`}}",
+            "ssh_wait_timeout": "20m",
+            "shutdown_command": "echo '{{user `password`}}'|sudo -S shutdown -P now",
+
+            "boot_wait": "2s",
+            "boot_command": [
+              "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+              "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+              "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+              "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+              "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+              "<bs><bs><bs><bs>",
+              "/install/vmlinuz noapic ",
+              "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed-desktop.cfg ",
+		  "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+		  "hostname={{ user `hostname` }} ",
+		  "fb=false debconf/frontend=noninteractive ",
+		  "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+		  "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+		  "passwd/user-fullname={{ user `user` }} ",
+		  "passwd/user-password={{ user `password` }} ",
+		  "passwd/user-password-again={{ user `password` }} ",
+		  "passwd/username={{ user `user` }} ",
+		  "initrd=/install/initrd.gz -- <enter>"
+
+            ]
+        }
+    ],
+
+    "provisioners": [
+       {
+         "type": "shell",
+         "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+         "scripts": [
+           "scripts/mirror.sh",
+	     "scripts/update.sh",
+	     "scripts/desktop.sh",
+	     "scripts/network.sh",
+	     "scripts/puppet.sh",
+	     "scripts/sudoers.sh"
+	   ]
+       }, {
+         "type": "shell",
+         "inline": ["mkdir /home/{{user `user`}}/.ssh -p"]
+       }, {
+	  "type": "file",
+        "source": "authorized_keys",
+        "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
+       }
+    ]
+}
