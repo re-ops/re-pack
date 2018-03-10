@@ -6,3 +6,4 @@ src/kvm/output-ubuntu-1510-server/
 src/kvm/output-ubuntu-1604-server
 src/kvm/output-ubuntu-16.04.3-server/
 output-ubuntu-16.04.3-desktop
+src/kvm/output-*

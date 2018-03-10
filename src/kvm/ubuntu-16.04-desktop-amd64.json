@@ -6,7 +6,7 @@
    "builders":
     [
         {
-            "name": "ubuntu-16.04.3-desktop",
+            "name": "ubuntu-16.04.4-desktop",
             "type": "qemu",
             "format": "qcow2",
             "accelerator": "kvm",
@@ -14,9 +14,9 @@
 
             "iso_urls": [
 		  "{{ user `iso_url` }}",
-		  "/home/ronen/ISOs/ubuntu-16.04.3-server-amd64.iso"
+		  "/home/ronen/ISOs/ubuntu-16.04.4-server-amd64.iso"
 		],
-            "iso_checksum": "10fcd20619dce11fe094e960c85ba4a9",
+		"iso_checksum": "6a7f31eb125a0b2908cf2333d7777c82",
             "iso_checksum_type": "md5",
 
             "http_directory": "http",
