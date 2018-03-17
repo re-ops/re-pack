@@ -3,7 +3,7 @@
     "aws_access_key": "",
     "aws_secret_key": "",
     "volume_size": "50",
-    "ami":"ami-96666ff5",
+    "ami":"ami-d38a4ab1",
     "region":"ap-southeast-2",
     "instance_type":"t2.medium"
   },
@@ -13,7 +13,9 @@
        "override": {
         "amazon-ebs": {
           "scripts" : [
-            "scripts/puppet.sh"
+            "scripts/update.sh",
+		"scripts/puppet.sh",
+		"scripts/re-ops.sh"
           ]
         }
      }
@@ -29,7 +31,7 @@
     "source_ami": "{{user `ami`}}",
     "instance_type": "{{user `instance_type`}}",
     "ssh_username": "ubuntu",
-    "ami_name": "ubuntu-16.04_puppet-3.8.7_{{timestamp}}",
+    "ami_name": "ubuntu-16.04.4_puppet-4.10.8_{{timestamp}}",
     "ami_block_device_mappings": [ {
             "device_name": "/dev/sda1",
             "volume_size": "{{user `volume_size`}}",

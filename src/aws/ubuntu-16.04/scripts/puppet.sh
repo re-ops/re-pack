@@ -1,6 +1,7 @@
-echo "==> Installing Puppet"
+#!/usr/bin/env bash
+wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb -P /tmp
+sudo dpkg -i /tmp/puppetlabs-release-pc1-xenial.deb
 sudo apt-get update
-wget https://gist.githubusercontent.com/narkisr/6097786/raw/puppet-preqs.sh
-chmod +x puppet-preqs.sh
-sudo /bin/bash puppet-preqs.sh
-
+sudo apt-get install puppet-agent
+sudo systemctl disable puppet
+sudo ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet
