@@ -1,6 +1,6 @@
 # Intro
 
-A collection of [packer](https://www.packer.io/) templates for creating [re-core](https://github.com/re-ops/re-core) ready images for AWS, Digitalocean, KVM etc..
+A collection of [Packer](https://www.packer.io/) templates for creating [Re-core](https://github.com/re-ops/re-core) ready images for AWS, Digitalocean, KVM.
 
 # Usage
 
@@ -14,7 +14,7 @@ $ cd src/digital/ubuntu-16.04
 $ packer build -only=digitalocean -var 'api_token=<your token>' template.json
 
 # build ubuntu 16.04 KVM image
-$ cd src/kvm
+$ cd src/kvm/ubuntu-16.04
 # use -var iso_url=/path/to/iso if you have pre-downloaded iso
 $ packer build -var 'user=<your user>' -var 'password=<your pass>' ubuntu-16.04-server-amd64.json
 # or build an XFCE desktop varient
