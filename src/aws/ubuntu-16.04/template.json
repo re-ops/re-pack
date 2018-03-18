@@ -9,6 +9,10 @@
   },
 
   "provisioners": [
+     {"type": "file",
+	"source": "files/defaults.cfg",
+	"destination": "/tmp/defaults.cfg"
+    },
     {"type": "shell",
        "override": {
         "amazon-ebs": {
