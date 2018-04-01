@@ -70,6 +70,10 @@
 	  "type": "file",
         "source": "authorized_keys",
         "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
+       }, {
+	  "type": "file",
+        "source": "locale",
+        "destination": "/etc/default/locale"
        }
     ]
 }
