@@ -3,6 +3,7 @@ sudo apt-get install packagekit dbus at-spi2-core -y
 sudo apt-get install gnome-terminal gedit -y
 
 # Fixing local
-sudo local-gen --purge
-sudo local-gen en_US.UTF-8
+sudo cp /tmp/locale /etc/default/locale
+sudo locale-gen --purge
+sudo locale-gen en_US.UTF-8
 
