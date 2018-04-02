@@ -1,6 +1,6 @@
 sudo apt-get install xubuntu-desktop --no-install-recommends -y
 sudo apt-get install packagekit dbus at-spi2-core -y
-sudo apt-get install gnome-terminal gedit -y
+sudo apt-get install gnome-terminal gedit vim-nox rsync -y
 
 # Fixing local
 sudo cp /tmp/locale /etc/default/locale
