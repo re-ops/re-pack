@@ -14,7 +14,7 @@
 
             "iso_urls": [
 		  "{{ user `iso_url` }}",
-		  "http://releases.ubuntu.com/18.04/ubuntu-18.04-server-amd64.iso"
+		  "http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04-server-amd64.iso"
 		],
             "iso_checksum": "1413c9797dbfa1e57fabfb5c91cfb96f",
             "iso_checksum_type": "md5",
@@ -47,6 +47,9 @@
     "provisioners": [
        {
          "type": "shell",
+         "inline": ["sudo wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/01-netcfg.yaml -P /etc/netplan"]
+       }, {
+         "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
          "scripts": [
            "scripts/mirror.sh",
@@ -60,7 +63,7 @@
          "inline": ["mkdir /home/{{user `user`}}/.ssh -p"]
        }, {
 	  "type": "file",
-        "source": "authorized_keys",
+        "source": "http/authorized_keys",
         "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
        }
     ]
