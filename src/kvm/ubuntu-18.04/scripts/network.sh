@@ -10,6 +10,7 @@ update-grub
 # echo "iface eth1 inet dhcp" >> /etc/network/interfaces
 
 # using netplan file
+sudo cp /tmp/01-netcfg.yaml /etc/netplan/
 sudo netplan apply
 
 # making dhcp client react faster

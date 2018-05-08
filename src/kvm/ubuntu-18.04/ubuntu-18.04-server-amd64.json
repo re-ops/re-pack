@@ -44,10 +44,10 @@
         }
     ],
 
-    "provisioners": [
-       {
-         "type": "shell",
-         "inline": ["sudo wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/01-netcfg.yaml -P /etc/netplan"]
+    "provisioners": [{
+	  "type": "file",
+        "source": "http/01-netcfg.yaml",
+        "destination": "/tmp/01-netcfg.yaml"
        }, {
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
@@ -65,6 +65,5 @@
 	  "type": "file",
         "source": "http/authorized_keys",
         "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
-       }
-    ]
+       }]
 }
