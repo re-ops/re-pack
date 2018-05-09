@@ -1,4 +1,4 @@
-<F3># This file describes the network interfaces available on your system
+# This file describes the network interfaces available on your system
 # For more information, see netplan(5).
 network:
  version: 2
