@@ -6,5 +6,12 @@ network:
  ethernets:
    eth0:
      dhcp4: yes
+     dhcp-identifier: mac
+     addresses: []
+     optional: true
    eth1:
      dhcp4: yes
+     dhcp-identifier: mac
+     addresses: []
+     optional: true
+
