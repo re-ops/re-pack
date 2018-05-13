@@ -6,7 +6,7 @@
    "builders":
     [
         {
-            "name": "ubuntu-16.04.4-desktop",
+            "name": "ubuntu-18.04-desktop",
             "type": "qemu",
             "format": "qcow2",
             "accelerator": "kvm",
@@ -14,9 +14,9 @@
 
             "iso_urls": [
 		  "{{ user `iso_url` }}",
-		  "http://releases.ubuntu.com/16.04.4/ubuntu-16.04.4-server-amd64.iso"
+		  "http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04-server-amd64.iso"
 		],
-		"iso_checksum": "6a7f31eb125a0b2908cf2333d7777c82",
+            "iso_checksum": "1413c9797dbfa1e57fabfb5c91cfb96f",
             "iso_checksum_type": "md5",
 
             "http_directory": "http",
@@ -25,17 +25,11 @@
             "ssh_password": "{{user `password`}}",
             "ssh_wait_timeout": "20m",
             "shutdown_command": "echo '{{user `password`}}'|sudo -S shutdown -P now",
-
             "boot_wait": "2s",
             "boot_command": [
-              "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-              "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-              "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-              "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-              "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-              "<bs><bs><bs><bs>",
+              "<esc><esc><enter>",
               "/install/vmlinuz noapic ",
-              "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed-desktop.cfg ",
+		  "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/16.04-preseed.cfg ",
 		  "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
 		  "hostname={{ user `hostname` }} ",
 		  "fb=false debconf/frontend=noninteractive ",
@@ -46,25 +40,22 @@
 		  "passwd/user-password-again={{ user `password` }} ",
 		  "passwd/username={{ user `user` }} ",
 		  "initrd=/install/initrd.gz -- <enter>"
-
             ]
         }
     ],
 
-    "provisioners": [
-       {
+    "provisioners": [{
 	  "type": "file",
-        "source": "http/locale",
-        "destination": "/tmp/locale"
-       },
-       {
+        "source": "http/01-netcfg.yaml",
+        "destination": "/tmp/01-netcfg.yaml"
+       }, {
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
          "scripts": [
            "scripts/mirror.sh",
+	     "scripts/network.sh",
 	     "scripts/update.sh",
 	     "scripts/desktop.sh",
-	     "scripts/network.sh",
 	     "scripts/puppet.sh",
 	     "scripts/sudoers.sh"
 	   ]
@@ -75,6 +66,5 @@
 	  "type": "file",
         "source": "http/authorized_keys",
         "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
-       }
-    ]
+       }]
 }
