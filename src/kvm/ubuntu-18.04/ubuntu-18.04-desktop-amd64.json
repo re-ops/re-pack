@@ -52,12 +52,11 @@
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
          "scripts": [
-           "scripts/mirror.sh",
-	     "scripts/network.sh",
 	     "scripts/update.sh",
 	     "scripts/desktop.sh",
 	     "scripts/puppet.sh",
-	     "scripts/sudoers.sh"
+	     "scripts/sudoers.sh",
+	     "scripts/network.sh"
 	   ]
        }, {
          "type": "shell",
