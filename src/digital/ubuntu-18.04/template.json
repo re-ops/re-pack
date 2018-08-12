@@ -6,7 +6,8 @@
      "ssh_username": "root",
      "image": "ubuntu-18-04-x64",
      "region": "nyc1",
-     "size": "512mb"
+     "size": "512mb",
+     "snapshot_name": "ubuntu-18-04.1-node_8.x"
     }
    ],
  "provisioners": [
@@ -14,10 +15,10 @@
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
         "scripts/update.sh",
-	  "scripts/node.sh"
+	  "scripts/node.sh",
+	  "scripts/re-ops.sh"
       ],
      "type": "shell"
     }
   ]
-
 }
