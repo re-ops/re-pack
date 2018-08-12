@@ -1,0 +1,1 @@
+re-ops ALL=NOPASSWD: /usr/bin/apt update, /usr/bin/apt upgrade -y, /usr/bin/purge-kernels, /usr/bin/apt-cleanup, /usr/bin/apt install * -y, /usr/sbin/ufw status, /bin/bash run.sh --detailed-exitcodes --color=false, /usr/bin/nmap *
