@@ -29,7 +29,7 @@
             "boot_command": [
               "<esc><esc><enter>",
               "/install/vmlinuz noapic ",
-		  "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/16.04-preseed.cfg ",
+		  "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
 		  "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
 		  "hostname={{ user `hostname` }} ",
 		  "fb=false debconf/frontend=noninteractive ",
