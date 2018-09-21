@@ -6,3 +6,4 @@ src/kvm/*/output-ubuntu-*/
 src/kvm/*/packer_cache/
 packer_cache
 output-ubuntu-18.04-server
+output-ubuntu-18.04.1-server
