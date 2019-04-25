@@ -55,7 +55,7 @@
            "scripts/mirror.sh",
 	     "scripts/update.sh",
 	     "scripts/network.sh",
-	     "scripts/node.sh",
+	     "scripts/re-ops.sh",
 	     "scripts/sudoers.sh"
 	   ]
        }, {

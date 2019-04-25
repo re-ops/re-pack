@@ -1,0 +1,31 @@
+{
+   "variables": {
+   },
+   "builders":
+    [
+        {
+            "output_image": "ubuntu-18.04.2_node-8.x",
+            "type": "lxd",
+		"image":"ubuntu:18.04",
+		"init_sleep":"5"
+        }
+    ],
+
+    "provisioners": [{
+         "type": "shell",
+	   "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+         "scripts": [
+           "scripts/mirror.sh",
+	     "scripts/update.sh",
+	     "scripts/re-ops.sh",
+	     "scripts/sudoers.sh"
+	   ]
+       }, {
+         "type": "shell",
+         "inline": ["mkdir /home/{{user `user`}}/.ssh -p"]
+       }, {
+	  "type": "file",
+        "source": "http/authorized_keys",
+        "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
+       }]
+}

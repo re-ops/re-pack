@@ -21,7 +21,7 @@
       "scripts": [
         "scripts/update.sh",
 	  "scripts/node.sh",
-	  "scripts/re-ops.sh"
+	  "scripts/re-ops-cloud.sh"
       ],
      "type": "shell"
     }
