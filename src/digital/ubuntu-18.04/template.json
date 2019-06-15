@@ -7,7 +7,7 @@
      "image": "ubuntu-18-04-x64",
      "region": "nyc1",
      "size": "512mb",
-     "snapshot_name": "ubuntu-18-04.1-node_8.x"
+     "snapshot_name": "ubuntu-18-04.2-corretto_8"
     }
    ],
  "provisioners": [
@@ -20,7 +20,7 @@
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
         "scripts/update.sh",
-	  "scripts/node.sh",
+	  "scripts/java.sh",
 	  "scripts/re-ops-cloud.sh"
       ],
      "type": "shell"

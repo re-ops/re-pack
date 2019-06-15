@@ -18,7 +18,7 @@
         "amazon-ebs": {
           "scripts" : [
             "scripts/update.sh",
-		"scripts/node.sh",
+		"scripts/java.sh",
 		"scripts/re-ops-cloud.sh"
           ]
         }
@@ -35,7 +35,7 @@
     "source_ami": "{{user `ami`}}",
     "instance_type": "{{user `instance_type`}}",
     "ssh_username": "ubuntu",
-    "ami_name": "ubuntu-18.04.1-node_8.x_{{timestamp}}",
+    "ami_name": "ubuntu-18.04.2-corretto_8_{{timestamp}}",
     "ami_block_device_mappings": [ {
             "device_name": "/dev/sda1",
             "volume_size": "{{user `volume_size`}}",

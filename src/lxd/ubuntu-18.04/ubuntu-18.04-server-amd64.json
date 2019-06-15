@@ -4,7 +4,7 @@
    "builders":
     [
         {
-            "output_image": "ubuntu-18.04.2_node-8.x",
+            "output_image": "ubuntu-18.04.2_corretto-8.x",
             "type": "lxd",
 		"image":"ubuntu:18.04",
 		"init_sleep":"5"
