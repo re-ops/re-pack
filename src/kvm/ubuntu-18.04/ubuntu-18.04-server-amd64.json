@@ -6,17 +6,19 @@
    "builders":
     [
         {
-            "name": "ubuntu-18.04.1-server",
+            "name": "ubuntu-18.04.2-server",
             "type": "qemu",
             "format": "qcow2",
             "accelerator": "kvm",
             "disk_size": "20000",
-
+	      "qemuargs": [
+                ["-display", "gtk"]
+            ],
             "iso_urls": [
 		  "{{ user `iso_url` }}",
-		  "http://cdimage.ubuntu.com/releases/18.04.1/release/ubuntu-18.04.1-server-amd64.iso"
+		  "http://cdimage.ubuntu.com/releases/18.04.2/release/ubuntu-18.04.2-server-amd64.iso"
 		],
-            "iso_checksum": "e8264fa4c417216f4304079bd94f895e",
+            "iso_checksum": "34416ff83179728d54583bf3f18d42d2",
             "iso_checksum_type": "md5",
 
             "http_directory": "http",
