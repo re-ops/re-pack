@@ -16,11 +16,13 @@
 		  "{{ user `iso_url` }}",
 		  "http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04.2-server-amd64.iso"
 		],
+		"qemuargs":[
+		 ["-display", "gtk"]
+		],
+
             "iso_checksum": "34416ff83179728d54583bf3f18d42d2",
             "iso_checksum_type": "md5",
-
             "http_directory": "http",
-
             "ssh_username": "{{user `user`}}",
             "ssh_password": "{{user `password`}}",
             "ssh_wait_timeout": "20m",
