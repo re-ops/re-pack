@@ -53,7 +53,7 @@
        }, {
 	  "type": "file",
         "source": "http/re-ops",
-        "destination": ":/tmp/re-ops"
+        "destination": "/tmp/re-ops"
        }, {
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
@@ -61,9 +61,10 @@
 	     "scripts/update.sh",
 	     "scripts/desktop.sh",
 	     "scripts/network.sh",
+	     "scripts/java.sh",
 	     "scripts/re-ops.sh"
 	   ]
-       }{
+       }, {
          "type": "shell",
          "inline": ["mkdir /home/{{user `user`}}/.ssh -p"]
        }, {
