@@ -12,6 +12,6 @@ Cmnd_Alias C_PKG = \
 
 Cmnd_Alias C_KERNEL = \
      /usr/bin/purge-kernels, \
-     /usr/sbin/sysctl -e -p
+     /sbin/sysctl -e -p
 
-re-ops ALL=NOPASSWD: C_TEE, C_PKG, /usr/sbin/ufw status, /usr/bin/nmap *, /usr/bin/tail -f *, /usr/bin/setfacl *
+re-ops ALL=NOPASSWD: C_TEE, C_SED, C_PKG, C_KERNEL, /usr/sbin/ufw status, /usr/bin/nmap *, /usr/bin/tail -f *, /usr/bin/setfacl *
