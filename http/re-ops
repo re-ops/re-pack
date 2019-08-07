@@ -14,4 +14,11 @@ Cmnd_Alias C_KERNEL = \
      /usr/bin/purge-kernels, \
      /sbin/sysctl -e -p
 
-re-ops ALL=NOPASSWD: C_TEE, C_SED, C_PKG, C_KERNEL, /usr/sbin/ufw status, /usr/bin/nmap *, /usr/bin/tail -f *, /usr/bin/setfacl *
+Cmnd_Alias C_SERVICE = \
+     /usr/sbin/service * stop, \
+     /usr/sbin/service * start, \
+     /usr/sbin/service * restart, \
+     /usr/sbin/service * status
+
+
+re-ops ALL=NOPASSWD: C_TEE, C_SED, C_PKG, C_KERNEL, C_SERVICE, /usr/sbin/ufw status, /usr/bin/nmap *, /usr/bin/tail -f *, /usr/bin/setfacl *

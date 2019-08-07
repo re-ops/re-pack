@@ -19,14 +19,17 @@
 	  "type": "file",
         "source": "http/authorized_keys",
         "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
-      } ,{
+      } , {
+	  "type": "file",
+        "source": "http/re-ops",
+        "destination": "/tmp/re-ops"
+       } , {
          "type": "shell",
          "scripts": [
            "scripts/mirror.sh",
 	     "scripts/update.sh",
 	     "scripts/java.sh",
-	     "scripts/re-ops.sh",
-	     "scripts/sudoers.sh"
+	     "scripts/re-ops.sh"
 	   ]
      }]
 }
