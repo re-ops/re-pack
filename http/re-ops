@@ -20,5 +20,13 @@ Cmnd_Alias C_SERVICE = \
      /usr/sbin/service * restart, \
      /usr/sbin/service * status
 
+Cmnd_Alias C_MISC = \
+     /usr/bin/tail -f *, \
+     /usr/bin/chsh -s /usr/bin/zsh *
 
-re-ops ALL=NOPASSWD: C_TEE, C_SED, C_PKG, C_KERNEL, C_SERVICE, /usr/sbin/ufw status, /usr/bin/nmap *, /usr/bin/tail -f *, /usr/bin/setfacl *
+Cmnd_Alias C_SECURITY= \
+     /usr/sbin/ufw status, \
+     /usr/bin/nmap *, \
+     /usr/bin/setfacl * \
+
+re-ops ALL=NOPASSWD: C_TEE, C_SED, C_PKG, C_KERNEL, C_SERVICE, C_MISC, C_SECURITY
