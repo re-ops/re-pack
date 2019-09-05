@@ -1,1 +1,35 @@
-re-ops ALL=(ALL) NOPASSWD:ALL
+Cmnd_Alias C_PIPES= \
+     /usr/bin/tee *, /usr/bin/tee -a *, \
+     /usr/bin/sed -i *, \
+     /usr/bin/tail -f *
+
+Cmnd_Alias C_PKG = \
+     /usr/bin/apt update, /usr/bin/apt upgrade -y, \
+     /usr/bin/apt-cleanup, /usr/bin/apt install * -y, \
+     /usr/bin/apt-get install -f, /usr/bin/add-apt-repository * -y, \
+     /usr/bin/dpkg -i *
+
+Cmnd_Alias C_KERNEL = \
+     /usr/bin/purge-kernels, \
+     /sbin/sysctl -e -p
+
+Cmnd_Alias C_SERVICE = \
+     /usr/sbin/service * stop, \
+     /usr/sbin/service * start, \
+     /usr/sbin/service * restart, \
+     /usr/sbin/service * status
+
+Cmnd_Alias C_USER = \
+     /usr/bin/chsh -s /usr/bin/zsh *, \
+     /usr/sbin/usermod -G * -a *
+
+Cmnd_Alias C_SECURITY= \
+     /usr/sbin/ufw status, \
+     /usr/bin/nmap *, \
+     /usr/bin/setfacl *
+
+
+Cmnd_Alias C_VIRTUAL= \
+     /usr/bin/lxd init --auto
+
+re-ops ALL=NOPASSWD: C_PIPES, C_PKG, C_KERNEL, C_SERVICE, C_USER, C_SECURITY, C_VIRTUAL
