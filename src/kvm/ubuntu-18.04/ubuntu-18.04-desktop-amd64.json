@@ -6,7 +6,7 @@
    "builders":
     [
         {
-            "name": "ubuntu-18.04-desktop",
+            "name": "ubuntu-18.04.3-desktop",
             "type": "qemu",
             "format": "qcow2",
             "accelerator": "kvm",

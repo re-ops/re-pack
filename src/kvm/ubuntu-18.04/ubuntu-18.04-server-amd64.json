@@ -6,7 +6,7 @@
    "builders":
     [
         {
-            "name": "ubuntu-18.04.2-server",
+            "name": "ubuntu-18.04.3-server",
             "type": "qemu",
             "format": "qcow2",
             "accelerator": "kvm",
