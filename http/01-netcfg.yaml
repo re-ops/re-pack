@@ -9,6 +9,11 @@ network:
      dhcp-identifier: mac
      addresses: []
      optional: true
+     dhcp4-overrides:
+        use-routes: false
+     routes:
+        - to: 192.168.122.0/24
+          via: 192.168.122.1
    eth1:
      dhcp4: yes
      dhcp-identifier: mac
