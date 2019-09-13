@@ -12,8 +12,8 @@
    ],
  "provisioners": [
     {
-	"destination": "/tmp/dev.edn",
-	"source": "http/digital.edn",
+	"destination": "/tmp/defaults.cfg",
+	"source": "http/defaults.cfg",
 	"type": "file"
     },
     {
