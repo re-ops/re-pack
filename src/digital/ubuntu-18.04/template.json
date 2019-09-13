@@ -7,7 +7,7 @@
      "image": "ubuntu-18-04-x64",
      "region": "nyc1",
      "size": "512mb",
-     "snapshot_name": "ubuntu-18-04.2-corretto_8"
+     "snapshot_name": "ubuntu-18-04.3-corretto_8"
     }
    ],
  "provisioners": [
