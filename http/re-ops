@@ -7,6 +7,7 @@ Cmnd_Alias C_PKG = \
      /usr/bin/apt update, /usr/bin/apt upgrade -y, \
      /usr/bin/apt-cleanup, /usr/bin/apt install * -y, \
      /usr/bin/apt-get install -f, /usr/bin/add-apt-repository * -y, \
+     /usr/bin/apt-key add *, \
      /usr/bin/dpkg -i *
 
 Cmnd_Alias C_KERNEL = \
