@@ -11,3 +11,8 @@ sudo setfacl -R -m u:root:rwX /etc
 sudo chmod 400 /etc/ssh/ssh_host_*
 sudo apt-get install acl -y
 sudo cp /tmp/re-ops /etc/sudoers.d/re-ops
+
+# ssh folder setup
+sudo mkdir /home/re-ops/.ssh/
+sudo chmod 700 /home/re-ops/.ssh/ -R
+sudo chown re-ops /home/re-ops/.ssh/ -R
