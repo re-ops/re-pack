@@ -1,7 +1,7 @@
 Cmnd_Alias C_PIPES= \
      /usr/bin/tee *, /usr/bin/tee -a *, \
      /usr/bin/sed -i *, \
-     /usr/bin/tail -f *
+     /usr/bin/tail -f /var/log/*
 
 Cmnd_Alias C_PKG = \
      /usr/bin/apt update, /usr/bin/apt upgrade -y, \
