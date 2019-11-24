@@ -2,8 +2,8 @@
 
 # A script used to import kvm images into our local hypervisor
 
-TARGET="ubuntu-$1_correto-8"
-IMAGE="/var/lib/libvirt/images/ubuntu-$1_correto-8.img"
+TARGET="ubuntu-$1_corretto-8"
+IMAGE="/var/lib/libvirt/images/ubuntu-$1_corretto-8.img"
 cp "output-ubuntu-$1-server/packer-ubuntu-$1-server" $IMAGE
 
 virsh destroy $TARGET
