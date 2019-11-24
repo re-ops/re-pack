@@ -12,6 +12,8 @@ $ ./scripts/import.sh 19.10 19.04
 When using a local development machine a seconday NAT to your wifi card can be added:
 
 ```xml
+$ cat network.xml
+
 <network connections='1'>
   <name>network</name>
   <uuid>some uuid</uuid>
@@ -30,6 +32,9 @@ When using a local development machine a seconday NAT to your wifi card can be a
     </dhcp>
   </ip>
 </network>
+
+$ virsh net-define network.xml
+
 ```
 
-And used for the non management link card.
+And used for the non management link card define in the template.
