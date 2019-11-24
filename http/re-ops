@@ -8,7 +8,8 @@ Cmnd_Alias C_PKG = \
      /usr/bin/apt-cleanup, /usr/bin/apt install * -y, \
      /usr/bin/apt-get install -f, /usr/bin/add-apt-repository * -y, \
      /usr/bin/apt-key add *, \
-     /usr/bin/dpkg -i *
+     /usr/bin/dpkg -i *, \
+     /usr/bin/debconf-set-selections
 
 Cmnd_Alias C_KERNEL = \
      /usr/bin/purge-kernels, \
@@ -27,6 +28,7 @@ Cmnd_Alias C_USER = \
 Cmnd_Alias C_SECURITY= \
      /usr/sbin/ufw status, \
      /usr/bin/nmap *, \
+     /usr/bin/netstat *, \
      /usr/bin/setfacl *
 
 
