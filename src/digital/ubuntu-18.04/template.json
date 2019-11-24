@@ -12,18 +12,21 @@
    ],
  "provisioners": [
     {
-	"destination": "/tmp/defaults.cfg",
-	"source": "http/defaults.cfg",
-	"type": "file"
-    },
-    {
+      "type": "file",
+      "source": "http/re-ops",
+      "destination": "/tmp/re-ops"
+    }, {
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
         "scripts/update.sh",
 	  "scripts/java.sh",
-	  "scripts/re-ops-cloud.sh"
+	  "scripts/re-ops.sh"
       ],
      "type": "shell"
+    }, {
+	"type": "file",
+      "source": "http/authorized_keys",
+      "destination": "/home/re-ops/.ssh/authorized_keys"
     }
   ]
 }
