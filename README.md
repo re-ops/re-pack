@@ -21,12 +21,49 @@ $ packer build -var 'user=<your user>' src/lxd/ubuntu-18.04/ubuntu-18.04-server-
 # Build an XFCE desktop varient
 $ read -s password
 $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-18.04/ubuntu-18.04-desktop-amd64.json
-
 ```
+
+# Notes
+
+## KVM
+
+Import image can be done by using:
+
+```bash
+# Args include os version and kvm os version
+$ ./scripts/import.sh 19.10 19.04
+```
+
+## Networking
+
+When using a local development machine a seconday NAT to your wifi card can be added:
+
+```xml
+<network connections='1'>
+  <name>network</name>
+  <uuid>some uuid</uuid>
+  <forward dev='wlo1' mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+    <interface dev='wlo1'/>
+  </forward>
+  <bridge name='virbr1' stp='on' delay='0'/>
+  <mac address=''/>
+  <domain name='network'/>
+  <ip address='192.168.100.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.100.128' end='192.168.100.254'/>
+    </dhcp>
+  </ip>
+</network>
+```
+
+And used for the non management link card.
 
 # Copyright and license
 
-Copyright [2018] [Ronen Narkis]
+Copyright [2019] [Ronen Narkis]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
