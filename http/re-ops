@@ -21,6 +21,10 @@ Cmnd_Alias C_SERVICE = \
      /usr/sbin/service * restart, \
      /usr/sbin/service * status
 
+Cmnd_Alias C_SYSTEMCTL = \
+     /bin/systemctl enable *, \
+     /bin/systemctl disable *
+
 Cmnd_Alias C_USER = \
      /usr/bin/chsh -s /usr/bin/zsh *, \
      /usr/sbin/usermod -G * -a *
@@ -35,4 +39,4 @@ Cmnd_Alias C_SECURITY= \
 Cmnd_Alias C_VIRTUAL= \
      /usr/bin/lxd init --auto
 
-re-ops ALL=NOPASSWD: C_PIPES, C_PKG, C_KERNEL, C_SERVICE, C_USER, C_SECURITY, C_VIRTUAL
+re-ops ALL=NOPASSWD: C_PIPES, C_PKG, C_KERNEL, C_SERVICE, C_SYSTEMCTL, C_USER, C_SECURITY, C_VIRTUAL
