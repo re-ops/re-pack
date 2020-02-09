@@ -5,10 +5,10 @@ Cmnd_Alias C_PIPES= \
 
 Cmnd_Alias C_PKG = \
      /usr/bin/apt update, /usr/bin/apt upgrade -y, \
-     /usr/bin/apt-cleanup, /usr/bin/apt install * -y, \
+     /usr/bin/apt-cleanup, /usr/bin/env DEBIAN_FRONTEND=noninteractive /usr/bin/apt install * -y, \
      /usr/bin/apt-get install -f, /usr/bin/add-apt-repository * -y, \
      /usr/bin/apt-key add *, \
-     /usr/bin/dpkg -i *, \
+     /usr/bin/env DEBIAN_FRONTEND=noninteractive /usr/bin/dpkg -i *, \
      /usr/bin/debconf-set-selections
 
 Cmnd_Alias C_KERNEL = \
