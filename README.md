@@ -15,12 +15,20 @@ $ packer build -var 'api_token=<your token>' src/digital/ubuntu-18.04/template.j
 $ read -s password
 $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-18.04/ubuntu-18.04-server-amd64.json
 
+# Build ubuntu 19.10 KVM image (use -var iso_url=/path/to/iso if you have pre-downloaded iso)
+$ read -s password
+$ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-18.04/ubuntu-19.10-server-amd64.json
+
 # Build ubuntu 18.04 LXD container
 $ packer build -var 'user=<your user>' src/lxd/ubuntu-18.04/ubuntu-18.04-server-amd64.json
 
 # Build an XFCE desktop varient
 $ read -s password
 $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-18.04/ubuntu-18.04-desktop-amd64.json
+
+# Build an Ubutnu Mate desktop varient
+$ read -s password
+$ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-19.10/ubuntu-19.10-desktop-amd64.json
 ```
 
 Check the [notes](./notes) section per hypervizor type for more information.
