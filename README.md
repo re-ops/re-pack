@@ -29,6 +29,9 @@ $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubunt
 # Build an Ubutnu Mate desktop varient
 $ read -s password
 $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-19.10/ubuntu-19.10-desktop-amd64.json
+
+# importing (kvm only)
+$ ./scripts/import.sh 19.10 server
 ```
 
 Check the [notes](./notes) section per hypervizor type for more information.
