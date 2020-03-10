@@ -1,8 +1,17 @@
 # Intro
 
-A collection of [Packer](https://www.packer.io/) templates for creating [Re-core](https://github.com/re-ops/re-core) ready images for AWS, Digitalocean, KVM.
+A collection of [Packer](https://www.packer.io/) templates for creating [Re-core](https://github.com/re-ops/re-core) ready images for AWS, Digitalocean, KVM and LXC.
 
 # Usage
+
+FIrst populate the master ssh key that will be used by [Re-mote](https://github.com/re-ops/re-mote).
+
+```bash
+# On dev environments we might use our local key
+$ cat ~/.ssh/id_rsa.pub > http/authorized_keys
+```
+
+Now head on and build the image of the hypervisor you will be using:
 
 ```bash
 # Build Ubuntu 18.04 AMI
