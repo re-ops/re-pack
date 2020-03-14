@@ -26,7 +26,7 @@ $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubunt
 
 # Build ubuntu 19.10 KVM image (use -var iso_url=/path/to/iso if you have pre-downloaded iso)
 $ read -s password
-$ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-18.04/ubuntu-19.10-server-amd64.json
+$ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-19.10/ubuntu-19.10-server-amd64.json
 
 # Build ubuntu 18.04 LXD container
 $ packer build -var 'user=<your user>' src/lxd/ubuntu-18.04/ubuntu-18.04-server-amd64.json
