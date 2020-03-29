@@ -47,7 +47,7 @@ Check the [notes](./notes) section per hypervizor type for more information.
 
 # Copyright and license
 
-Copyright [2019] [Ronen Narkis]
+Copyright [2020] [Ronen Narkis]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
