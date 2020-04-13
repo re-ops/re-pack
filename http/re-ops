@@ -40,7 +40,7 @@ Cmnd_Alias C_DISK= \
      /usr/sbin/parted * --script -- mklabel gpt, \
      /usr/sbin/parted -s -a optimal -- * mkpart primary 0 -1, \
      /usr/sbin/mkfs.ext4 * -F, \
-     /usr/bin/mount * *
+     /usr/bin/mount *
 
 Cmnd_Alias C_VIRTUAL= \
      /usr/bin/lxd init --auto
