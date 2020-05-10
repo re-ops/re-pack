@@ -14,7 +14,7 @@ Cmnd_Alias C_PKG = \
 
 Cmnd_Alias C_KERNEL = \
      /usr/bin/purge-kernels, \
-     /sbin/sysctl -e -p
+     /usr/sbin/sysctl -e -p
 
 Cmnd_Alias C_SERVICE = \
      /usr/sbin/service * stop, \
