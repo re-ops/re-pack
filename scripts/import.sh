@@ -18,3 +18,4 @@ if [[ "$?" == 0 ]]; then
   virsh undefine $TEMPLATE
 fi
 virt-install -n $TEMPLATE -r 2048 --os-type=linux --os-variant=ubuntu$OS_TYPE --disk "$IMAGE,device=disk,bus=virtio" --network default -w bridge=virbr0,model=virtio --vnc --noautoconsole --import --check path_in_use=off
+virsh destroy $TEMPLATE
