@@ -22,6 +22,9 @@ $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubunt
 $ read -s password
 $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-20.04/ubuntu-20.04-desktop-amd64.json
 
+# Build ubuntu 20.04 LXD container
+$ packer build -var 'user=<your user>' src/lxd/ubuntu-20.04/ubuntu-20.04-server-amd64.json
+
 # importing (kvm only)
 $ ./scripts/import.sh 20.04 server
 
@@ -30,9 +33,6 @@ $ packer build -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-k
 
 # Build ubuntu 18.04 Digitalocean image
 $ packer build -var 'api_token=<your token>' src/digital/ubuntu-18.04/template.json
-
-# Build ubuntu 18.04 LXD container
-$ packer build -var 'user=<your user>' src/lxd/ubuntu-18.04/ubuntu-18.04-server-amd64.json
 ```
 
 # Copyright and license

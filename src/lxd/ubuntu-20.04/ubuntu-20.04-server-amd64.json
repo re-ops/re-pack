@@ -4,9 +4,9 @@
    "builders":
     [
         {
-            "output_image": "ubuntu-19.04_corretto-8",
+            "output_image": "ubuntu-20.04_corretto-8",
             "type": "lxd",
-		"image":"ubuntu:19.04",
+		"image":"ubuntu:20.04",
 		"init_sleep":"5"
         }
     ],
@@ -25,8 +25,7 @@
            "scripts/mirror.sh",
 	     "scripts/update.sh",
 	     "scripts/java.sh",
-	     "scripts/re-ops.sh",
-	     "scripts/sudoers.sh"
+	     "scripts/re-ops.sh"
 	   ]
      }]
 }
