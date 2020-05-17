@@ -55,6 +55,10 @@
         "source": "http/re-ops",
         "destination": "/tmp/re-ops"
        }, {
+	  "type": "file",
+        "source": "http/accountservice",
+        "destination": "/tmp/accountservice"
+       }, {
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
          "scripts": [
@@ -71,5 +75,6 @@
 	  "type": "file",
         "source": "http/authorized_keys",
         "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
-       }]
+       }
+    ]
 }
