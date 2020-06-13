@@ -14,7 +14,8 @@ Cmnd_Alias C_PKG = \
 
 Cmnd_Alias C_KERNEL = \
      /usr/bin/purge-kernels, \
-     /usr/sbin/sysctl --system
+     /usr/sbin/sysctl --system, \
+     /usr/sbin/sysctl -e -p /etc/sysctl.d/*
 
 Cmnd_Alias C_SERVICE = \
      /usr/sbin/service * stop, \
@@ -34,7 +35,8 @@ Cmnd_Alias C_SECURITY= \
      /usr/sbin/ufw status, \
      /usr/bin/nmap *, \
      /usr/bin/netstat *, \
-     /usr/bin/setfacl *
+     /usr/bin/setfacl *, \
+     /usr/sbin/ufw *
 
 Cmnd_Alias C_DISK= \
      /usr/sbin/parted * --script -- mklabel *, \
