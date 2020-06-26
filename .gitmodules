@@ -1,0 +1,3 @@
+[submodule "re-cipes"]
+	path = re-cipes
+	url = git://github.com/re-ops/re-cipes.git

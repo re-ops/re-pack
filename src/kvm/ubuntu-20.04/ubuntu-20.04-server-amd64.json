@@ -55,14 +55,22 @@
         "source": "http/re-ops",
         "destination": "/tmp/re-ops"
        }, {
+	  "type": "file",
+        "source": "re-cipes/resources",
+        "destination": "/tmp"
+       }, {
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+         "environment_vars": [
+            "RECIPE={{user `recipe`}}"
+         ],
          "scripts": [
            "scripts/mirror.sh",
 	     "scripts/update.sh",
 	     "scripts/network.sh",
 	     "scripts/java.sh",
-	     "scripts/re-ops.sh"
+	     "scripts/re-ops.sh",
+	     "scripts/re-cipes.sh"
 	   ]
        }, {
          "type": "shell",
