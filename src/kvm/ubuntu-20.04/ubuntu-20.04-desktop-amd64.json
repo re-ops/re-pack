@@ -62,6 +62,7 @@
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
          "scripts": [
+	     "scripts/mirror.sh",
 	     "scripts/update.sh",
 	     "scripts/mate.sh",
 	     "scripts/network.sh",
