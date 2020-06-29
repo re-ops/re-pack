@@ -35,6 +35,18 @@ $ packer build -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-k
 $ packer build -var 'api_token=<your token>' src/digital/ubuntu-18.04/template.json
 ```
 
+Usine [Re-cipes](https://github.com/re-ops/re-cipes) for provisioning an image:
+
+```bash
+packer build -var 'user=<your user>' -var "recipe=re-cipes.profiles/elasticsearch" -var "password=${password}" src/kvm/ubuntu-20.04/ubuntu-20.04-server-amd64.json
+```
+
+We can also specify the hostname of the final image:
+
+```bash
+packer build -var 'user=<your user>' -var "host=elasticsearch" -var "password=${password}" src/kvm/ubuntu-20.04/ubuntu-20.04-server-amd64.json
+```
+
 # Copyright and license
 
 Copyright [2020] [Ronen Narkis]
