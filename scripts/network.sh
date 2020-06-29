@@ -11,5 +11,9 @@ sudo netplan generate
 sed -i 's/#retry 60;/retry 10;/' /etc/dhcp/dhclient.conf
 sed -i 's/timeout 300;/timeout 5;/' /etc/dhcp/dhclient.conf
 
+if [ ! -z "$HOST" ] ; then
+  sudo /usr/bin/hostnamectl set-hostname $HOST
+fi
 # removing the template hostname entry
 sed -i '/127.0.1.1.*template/d' /etc/hosts
+
