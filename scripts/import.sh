@@ -4,12 +4,14 @@
 # This scripts take two inputs:
 #    $1 - os version (desktop
 #    $2 - os varient (desktop or server)
+#    $3 - domain name (ubuntu-$2-$1_corretto-8 by default)
+#    $4 - import dest volume (/var/lib/libvirt/images by default)
 
-TEMPLATE="ubuntu-$2-$1_corretto-8"
-VOLUME="${3:-/var/lib/libvirt/images}"
-IMAGE="$VOLUME/ubuntu-$2-$1_corretto-8.img"
+TEMPLATE="${3:-ubuntu-$2-$1_corretto-8}"
+VOLUME="${4:-/var/lib/libvirt/images}"
+IMAGE="$VOLUME/$TEMPLATE.img"
 # The lastest os version listed currently
-OS_TYPE="18.04"
+OS_TYPE="20.04"
 sudo cp "output-ubuntu-$1-$2/packer-ubuntu-$1-$2" $IMAGE
 
 virsh list --all | grep $TEMPLATE

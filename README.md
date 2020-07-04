@@ -25,9 +25,6 @@ $ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubunt
 # Build ubuntu 20.04 LXD container
 $ packer build -var 'user=<your user>' src/lxd/ubuntu-20.04/ubuntu-20.04-server-amd64.json
 
-# importing (kvm only)
-$ ./scripts/import.sh 20.04 server
-
 # Build Ubuntu 18.04 AMI
 $ packer build -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-key>' src/aws/ubuntu-18.04/template.json
 
@@ -35,16 +32,27 @@ $ packer build -var 'aws_access_key=<access-key>' -var 'aws_secret_key=<secret-k
 $ packer build -var 'api_token=<your token>' src/digital/ubuntu-18.04/template.json
 ```
 
+## Image provisioning
+
 Usine [Re-cipes](https://github.com/re-ops/re-cipes) for provisioning an image:
 
 ```bash
 packer build -var 'user=<your user>' -var "recipe=re-cipes.profiles/elasticsearch" -var "password=${password}" src/kvm/ubuntu-20.04/ubuntu-20.04-server-amd64.json
 ```
 
-We can also specify the hostname of the final image:
+Setting image hostname:
 
 ```bash
 packer build -var 'user=<your user>' -var "host=elasticsearch" -var "password=${password}" src/kvm/ubuntu-20.04/ubuntu-20.04-server-amd64.json
+```
+
+## Image importing (KVM only)
+
+```bash
+$ ./scripts/import.sh 20.04 server
+
+# We can also specify import domain name and volume
+$ ./scripts/import.sh 20.04 server elasticsearch /datastore/images
 ```
 
 # Copyright and license
