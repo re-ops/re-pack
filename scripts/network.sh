@@ -17,3 +17,4 @@ fi
 # removing the template hostname entry
 sed -i '/127.0.1.1.*template/d' /etc/hosts
 
+sudo apt install net-tools -y
