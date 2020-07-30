@@ -15,11 +15,15 @@
       {
          "type": "shell",
          "inline": ["mkdir /home/{{user `user`}}/.ssh -p"]
-      }, {
+      } , {
+	  "type": "file",
+        "source": "http/re-ops",
+        "destination": "/tmp/re-ops"
+      } , {
 	  "type": "file",
         "source": "http/authorized_keys",
         "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
-      } ,{
+      } , {
          "type": "shell",
          "scripts": [
            "scripts/mirror.sh",
