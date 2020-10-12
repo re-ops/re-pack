@@ -16,11 +16,11 @@ Now head on and build the image of the hypervisor you will be using:
 ```bash
 # Build Ubuntu 20.04 KVM image (use -var iso_url=/path/to/iso if you have pre-downloaded iso)
 $ read -s password
-$ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-20.04/ubuntu-20.04-server-amd64.json
+$ packer build -var 'user=<your user>' -var "password=${password}" -var "recipe=re-cipes.profiles/re-ops-image" src/kvm/ubuntu-20.04/ubuntu-20.04-server-amd64.json
 
 # Build Ubuntu 20.04 Mate desktop varient
 $ read -s password
-$ packer build -var 'user=<your user>' -var "password=${password}" src/kvm/ubuntu-20.04/ubuntu-20.04-desktop-amd64.json
+$ packer build -var 'user=<your user>' -var "password=${password}" -var "recipe=re-cipes.profiles/re-ops-image" src/kvm/ubuntu-20.04/ubuntu-20.04-desktop-amd64.json
 
 # Build ubuntu 20.04 LXD container
 $ packer build -var 'user=<your user>' src/lxd/ubuntu-20.04/ubuntu-20.04-server-amd64.json

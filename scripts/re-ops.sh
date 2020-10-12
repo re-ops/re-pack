@@ -16,7 +16,3 @@ sudo cp /tmp/re-ops /etc/sudoers.d/re-ops
 sudo mkdir /home/re-ops/.ssh/
 sudo chmod 700 /home/re-ops/.ssh/ -R
 sudo chown re-ops /home/re-ops/.ssh/ -R
-
-
-# ssh hardening
-sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
