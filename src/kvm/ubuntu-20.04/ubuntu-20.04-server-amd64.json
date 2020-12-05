@@ -66,7 +66,6 @@
 		"HOST={{user `host`}}"
          ],
          "scripts": [
-           "scripts/mirror.sh",
 	     "scripts/update.sh",
 	     "scripts/network.sh",
 	     "scripts/java.sh",

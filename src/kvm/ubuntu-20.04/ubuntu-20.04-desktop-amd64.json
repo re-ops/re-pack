@@ -61,8 +61,11 @@
        }, {
          "type": "shell",
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+         "environment_vars": [
+            "RECIPE={{user `recipe`}}",
+		"HOST={{user `host`}}"
+         ],
          "scripts": [
-	     "scripts/mirror.sh",
 	     "scripts/update.sh",
 	     "scripts/mate.sh",
 	     "scripts/network.sh",
