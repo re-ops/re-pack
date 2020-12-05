@@ -56,6 +56,10 @@
         "destination": "/tmp/re-ops"
        }, {
 	  "type": "file",
+        "source": "re-cipes/resources",
+        "destination": "/tmp"
+       }, {
+	  "type": "file",
         "source": "http/accountservice",
         "destination": "/tmp/accountservice"
        }, {
