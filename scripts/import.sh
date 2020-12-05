@@ -2,7 +2,7 @@
 
 # A script used to import kvm images into a local volume and create a template for re-core to use
 # This scripts take two inputs:
-#    $1 - os version (desktop
+#    $1 - os version (20.04)
 #    $2 - os varient (desktop or server)
 #    $3 - domain name (ubuntu-$2-$1_corretto-8 by default)
 #    $4 - import dest volume (/var/lib/libvirt/images by default)
