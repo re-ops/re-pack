@@ -67,7 +67,8 @@
 	     "scripts/mate.sh",
 	     "scripts/network.sh",
 	     "scripts/java.sh",
-	     "scripts/re-ops.sh"
+	     "scripts/re-ops.sh",
+	    "scripts/re-cipes.sh"
 	   ]
        }, {
          "type": "shell",
