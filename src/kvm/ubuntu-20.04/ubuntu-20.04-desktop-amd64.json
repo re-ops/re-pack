@@ -67,6 +67,7 @@
          "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
          "environment_vars": [
             "RECIPE={{user `recipe`}}",
+		"CACHE={{user `cache`}}",
 		"HOST={{user `host`}}"
          ],
          "scripts": [
@@ -75,7 +76,8 @@
 	     "scripts/network.sh",
 	     "scripts/java.sh",
 	     "scripts/re-ops.sh",
-	    "scripts/re-cipes.sh"
+	     "scripts/re-cipes.sh",
+	     "scripts/cache.sh"
 	   ]
        }, {
          "type": "shell",
