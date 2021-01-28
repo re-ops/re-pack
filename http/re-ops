@@ -43,7 +43,11 @@ Cmnd_Alias C_DISK= \
      /usr/sbin/mkfs.ext4 * -F, \
      /usr/bin/mount *
 
+Cmnd_Alias C_OSSEC= \
+     /var/ossec/bin/agent-auth -m * -P *
+
+
 Cmnd_Alias C_VIRTUAL= \
      /usr/bin/lxd init --auto
 
-re-ops ALL=NOPASSWD: C_PIPES, C_PKG, C_KERNEL, C_SERVICE, C_SYSTEMCTL, C_USER, C_SECURITY, C_VIRTUAL, C_DISK
+re-ops ALL=NOPASSWD: C_PIPES, C_PKG, C_KERNEL, C_SERVICE, C_SYSTEMCTL, C_USER, C_SECURITY, C_VIRTUAL, C_DISK, C_OSSEC
