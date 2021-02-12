@@ -14,14 +14,14 @@
 
             "iso_urls": [
 		  "{{ user `iso_url` }}",
-		  "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso"
+		  "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04.1/release/ubuntu-20.04.1-legacy-server-amd64.iso"
 		],
 		"qemuargs":[
 		 ["-display", "gtk"]
 		],
 
-		"iso_checksum": "9d2b54506f8f9fdad6b72e45aff0f0de",
-            "iso_checksum_type": "md5",
+		"iso_checksum": "f11bda2f2caed8f420802b59f382c25160b114ccc665dbac9c5046e7fceaced2",
+		"iso_checksum_type": "sha256",
             "http_directory": "http",
             "ssh_username": "{{user `user`}}",
             "ssh_password": "{{user `password`}}",
