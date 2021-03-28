@@ -1,85 +1,93 @@
 {
-   "variables": {
-    "password": "",
-    "hostname": "template"
-   },
-   "builders":
-    [
-        {
-            "name": "ubuntu-20.04-server",
-            "type": "qemu",
-            "format": "qcow2",
-            "accelerator": "kvm",
-            "disk_size": "20000",
-	      "qemuargs": [
-                ["-display", "gtk"]
-            ],
-            "iso_urls": [
-		  "{{ user `iso_url` }}",
-		  "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04.1/release/ubuntu-20.04.1-legacy-server-amd64.iso"
-		],
-            "iso_checksum": "f11bda2f2caed8f420802b59f382c25160b114ccc665dbac9c5046e7fceaced2",
-            "iso_checksum_type": "sha256",
-
-            "http_directory": "http",
-
-            "ssh_username": "{{user `user`}}",
-            "ssh_password": "{{user `password`}}",
-            "ssh_wait_timeout": "20m",
-            "shutdown_command": "echo '{{user `password`}}'|sudo -S shutdown -P now",
-            "boot_wait": "2s",
-            "boot_command": [
-              "<esc><esc><enter>",
-              "/install/vmlinuz noapic ",
-		  "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-		  "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-		  "hostname={{ user `hostname` }} ",
-		  "fb=false debconf/frontend=noninteractive ",
-		  "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
-		  "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
-		  "passwd/user-fullname={{ user `user` }} ",
-		  "passwd/user-password={{ user `password` }} ",
-		  "passwd/user-password-again={{ user `password` }} ",
-		  "passwd/username={{ user `user` }} ",
-		  "initrd=/install/initrd.gz -- <enter>"
-            ]
-        }
-    ],
-
-    "provisioners": [{
-	  "type": "file",
-        "source": "http/01-netcfg.yaml",
-        "destination": "/tmp/01-netcfg.yaml"
-       }, {
-	  "type": "file",
-        "source": "http/re-ops",
-        "destination": "/tmp/re-ops"
-       }, {
-	  "type": "file",
-        "source": "re-cipes/resources",
-        "destination": "/tmp"
-       }, {
-         "type": "shell",
-         "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
-         "environment_vars": [
-            "RECIPE={{user `recipe`}}",
-		"CACHE={{user `cache`}}",
-		"HOST={{user `host`}}"
-         ],
-         "scripts": [
-	     "scripts/update.sh",
-	     "scripts/network.sh",
-	     "scripts/java.sh",
-	     "scripts/re-ops.sh",
-	     "scripts/re-cipes.sh",
-	     "scripts/cache.sh"
-	   ]
-       }, {
-         "type": "shell",
-         "inline": ["mkdir /home/{{user `user`}}/.ssh -p"]
-       }, {
-	  "type": "file",
-        "source": "http/authorized_keys",
-        "destination": "/home/{{user `user`}}/.ssh/authorized_keys"
-       }]
+  "builders": [
+    {
+      "accelerator": "kvm",
+      "boot_command": [
+        "<esc><esc><enter>",
+        "/install/vmlinuz noapic ",
+        "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+        "hostname={{ user `hostname` }} ",
+        "fb=false debconf/frontend=noninteractive ",
+        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+        "passwd/user-fullname={{ user `user` }} ",
+        "passwd/user-password={{ user `password` }} ",
+        "passwd/user-password-again={{ user `password` }} ",
+        "passwd/username={{ user `user` }} ",
+        "initrd=/install/initrd.gz -- <enter>"
+      ],
+      "boot_wait": "2s",
+      "disk_size": "20000",
+      "format": "qcow2",
+      "http_directory": "http",
+      "iso_checksum": "sha256:f11bda2f2caed8f420802b59f382c25160b114ccc665dbac9c5046e7fceaced2",
+      "iso_urls": [
+        "{{ user `iso_url` }}",
+        "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04.1/release/ubuntu-20.04.1-legacy-server-amd64.iso"
+      ],
+      "name": "ubuntu-20.04-server",
+      "qemuargs": [
+        [
+          "-display",
+          "gtk"
+        ]
+      ],
+      "shutdown_command": "echo '{{user `password`}}'|sudo -S shutdown -P now",
+      "ssh_password": "{{user `password`}}",
+      "ssh_timeout": "20m",
+      "ssh_username": "{{user `user`}}",
+      "type": "qemu"
+    }
+  ],
+  "provisioners": [
+    {
+      "destination": "/tmp/01-netcfg.yaml",
+      "source": "http/01-netcfg.yaml",
+      "type": "file"
+    },
+    {
+      "destination": "/tmp/re-ops",
+      "source": "http/re-ops",
+      "type": "file"
+    },
+    {
+      "destination": "/tmp",
+      "source": "re-cipes/resources",
+      "type": "file"
+    },
+    {
+      "environment_vars": [
+        "RECIPE={{user `recipe`}}",
+        "CACHE={{user `cache`}}",
+        "HOST={{user `host`}}"
+      ],
+      "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "scripts/update.sh",
+        "scripts/network.sh",
+        "scripts/java.sh",
+        "scripts/re-ops.sh",
+        "scripts/re-cipes.sh",
+        "scripts/cache.sh"
+      ],
+      "type": "shell"
+    },
+    {
+      "inline": [
+        "mkdir /home/{{user `user`}}/.ssh -p"
+      ],
+      "type": "shell"
+    },
+    {
+      "destination": "/home/{{user `user`}}/.ssh/authorized_keys",
+      "source": "http/authorized_keys",
+      "type": "file"
+    }
+  ],
+  "variables": {
+    "hostname": "template",
+    "password": ""
+  }
 }
+
