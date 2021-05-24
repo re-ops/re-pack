@@ -31,7 +31,6 @@ Cmnd_Alias C_USER = \
      /usr/sbin/usermod -G * -a *
 
 Cmnd_Alias C_SECURITY= \
-     /usr/sbin/ufw status, \
      /usr/bin/nmap *, \
      /usr/bin/netstat *, \
      /usr/bin/setfacl *, \
