@@ -1,0 +1,1 @@
+grant ALL=NOPASSWD: /bin/cp /tmp/re-ops /etc/sudoers.d/re-ops

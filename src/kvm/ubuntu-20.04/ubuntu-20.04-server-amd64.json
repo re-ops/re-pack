@@ -24,7 +24,7 @@
       "iso_checksum": "sha256:f11bda2f2caed8f420802b59f382c25160b114ccc665dbac9c5046e7fceaced2",
       "iso_urls": [
         "{{ user `iso_url` }}",
-        "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04.1/release/ubuntu-20.04.1-legacy-server-amd64.iso"
+        "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso"
       ],
       "name": "ubuntu-20.04-server",
       "qemuargs": [
@@ -52,8 +52,18 @@
       "type": "file"
     },
     {
+      "destination": "/tmp/grant",
+      "source": "http/grant",
+      "type": "file"
+    },
+    {
       "destination": "/tmp",
       "source": "re-cipes/resources",
+      "type": "file"
+    },
+    {
+      "destination": "/tmp/authorized_keys",
+      "source": "http/authorized_keys",
       "type": "file"
     },
     {
@@ -68,21 +78,11 @@
         "scripts/network.sh",
         "scripts/java.sh",
         "scripts/re-ops.sh",
+	  "scripts/grant.sh",
         "scripts/re-cipes.sh",
         "scripts/cache.sh"
       ],
       "type": "shell"
-    },
-    {
-      "inline": [
-        "mkdir /home/{{user `user`}}/.ssh -p"
-      ],
-      "type": "shell"
-    },
-    {
-      "destination": "/home/{{user `user`}}/.ssh/authorized_keys",
-      "source": "http/authorized_keys",
-      "type": "file"
     }
   ],
   "variables": {

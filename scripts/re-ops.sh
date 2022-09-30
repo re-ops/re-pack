@@ -15,4 +15,5 @@ sudo cp /tmp/re-ops /etc/sudoers.d/re-ops
 # ssh folder setup
 sudo mkdir /home/re-ops/.ssh/
 sudo chmod 700 /home/re-ops/.ssh/ -R
+sudo cp /tmp/authorized_keys /home/re-ops/.ssh/authorized_keys 
 sudo chown re-ops /home/re-ops/.ssh/ -R
